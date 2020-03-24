@@ -6,11 +6,11 @@ import {
   Output,
   ViewChild,
   DoCheck
-} from "@angular/core";
-import { FormControl } from "@angular/forms";
+} from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 @Component({
-  selector: "mat-select-autocomplete",
+  selector: 'mat-select-autocomplete',
   template: `
     <mat-form-field appearance="{{ appearance }}">
       <mat-select
@@ -93,31 +93,31 @@ import { FormControl } from "@angular/forms";
   ]
 })
 export class SelectAutocompleteComponent implements OnChanges, DoCheck {
-  @Input() selectPlaceholder: string = "search...";
+  @Input() selectPlaceholder = 'search...';
   @Input() placeholder: string;
   @Input() options;
   @Input() disabled = false;
-  @Input() display = "display";
-  @Input() value = "value";
+  @Input() display = 'display';
+  @Input() value = 'value';
   @Input() formControl: FormControl = new FormControl();
-  @Input() errorMsg: string = "Field is required";
+  @Input() errorMsg = 'Field is required';
   @Input() showErrorMsg = false;
   @Input() selectedOptions;
   @Input() multiple = true;
 
   // New Options
-  @Input() labelCount: number = 1;
-  @Input() appearance: "standard" | "fill" | "outline" = "standard";
+  @Input() labelCount = 1;
+  @Input() appearance: 'standard' | 'fill' | 'outline' = 'standard';
 
   @Output()
   selectionChange: EventEmitter<any> = new EventEmitter();
 
-  @ViewChild("selectElem", { static: true }) selectElem;
+  @ViewChild('selectElem', { static: true }) selectElem;
 
   filteredOptions: Array<any> = [];
   selectedValue: Array<any> = [];
   selectAllChecked = false;
-  displayString = "";
+  displayString = '';
   constructor() {}
 
   ngOnChanges() {
@@ -189,7 +189,7 @@ export class SelectAutocompleteComponent implements OnChanges, DoCheck {
   }
 
   onDisplayString() {
-    this.displayString = "";
+    this.displayString = '';
     if (this.selectedValue && this.selectedValue.length) {
       let displayOption = [];
       if (this.multiple) {
@@ -202,7 +202,7 @@ export class SelectAutocompleteComponent implements OnChanges, DoCheck {
         if (displayOption.length) {
           for (let i = 0; i < displayOption.length; i++) {
             if (displayOption[i] && displayOption[i][this.display]) {
-              this.displayString += displayOption[i][this.display] + ",";
+              this.displayString += displayOption[i][this.display] + ',';
             }
           }
           this.displayString = this.displayString.slice(0, -1);
@@ -210,8 +210,14 @@ export class SelectAutocompleteComponent implements OnChanges, DoCheck {
             this.selectedValue.length > 1 &&
             this.selectedValue.length > this.labelCount
           ) {
-            this.displayString += ` (+${this.selectedValue.length -
-              this.labelCount} others)`;
+            // Se muestran unos pocos elementos de los seleccionados y se mencionan
+            // que existen n más.
+            this.displayString =
+              (
+                (this.displayString.length > 45) ?
+                  this.displayString.substr(0, 45 - 1) + '...' :
+                  this.displayString
+              ) + ` (y ${this.selectedValue.length - this.labelCount} más)`;
           }
         }
       } else {
