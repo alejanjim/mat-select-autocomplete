@@ -98,7 +98,7 @@ export class MultiselectComponent implements OnChanges {
   @Output()
   selectionChange: EventEmitter<any> = new EventEmitter();
 
-  @ViewChild('selectElem') selectElem;
+  @ViewChild('selectElem', {static: false}) selectElem;
 
   filteredOptions: Array<any> = [];
   selectedValue: Array<any> = [];
