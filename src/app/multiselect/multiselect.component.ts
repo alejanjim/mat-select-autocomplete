@@ -176,8 +176,18 @@ export class MultiselectComponent implements OnChanges {
             this.displayString += displayOption[i][this.display] + ',';
           }
           this.displayString = this.displayString.slice(0, -1);
-          if (this.selectedValue.length > 1) {
-            this.displayString += ` (+${this.selectedValue.length - this.labelCount} others)`;
+          if (
+            this.selectedValue.length > 1 &&
+            this.selectedValue.length > this.labelCount
+          ) {
+            // Se muestran unos pocos elementos de los seleccionados y se mencionan
+            // que existen n más.
+            this.displayString =
+              (
+                (this.displayString.length > 45) ?
+                  this.displayString.substr(0, 45 - 1) + '...' :
+                  this.displayString
+              ) + ` (y ${this.selectedValue.length - this.labelCount} más)`;
           }
         }
       } else {
