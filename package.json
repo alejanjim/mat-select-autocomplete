@@ -1,7 +1,7 @@
 {
-  "name": "mat-select-autocomplete",
+  "name": "select-autocomplete-app",
   "version": "0.0.0",
-  "files": ["dist/select-autocomplete/*"],
+  "files": ["dist"],
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -12,7 +12,8 @@
     "publish": "npm publish ./dist/select-autocomplete/mat-select-autocomplete-{version}.tgz",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "postinstall": "npm i ./dist/select-autocomplete/"
   },
   "private": true,
   "dependencies": {
