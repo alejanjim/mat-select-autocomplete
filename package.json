@@ -13,7 +13,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "postinstall": "npm i ./node_modules/select-autocomplete-app/dist/select-autocomplete/"
+    "postinstall": "npm i ./dist/select-autocomplete/"
   },
   "private": true,
   "dependencies": {
