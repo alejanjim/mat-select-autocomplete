@@ -1,10 +1,10 @@
-import { SelectAutocompleteComponent } from "select-autocomplete";
-import { Component, ViewChild } from "@angular/core";
+import { SelectAutocompleteComponent } from 'select-autocomplete';
+import { Component, ViewChild } from '@angular/core';
 
 @Component({
-  selector: "app-root",
-  templateUrl: "./app.component.html",
-  styleUrls: ["./app.component.css"]
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
   @ViewChild(SelectAutocompleteComponent, { static: true })
@@ -12,34 +12,35 @@ export class AppComponent {
 
   options = [
     {
-      label: "One",
-      data: "1"
+      label: 'One',
+      data: '1'
     },
     {
-      label: "Two",
-      data: "2"
+      label: 'Two',
+      data: '2'
     },
     {
-      label: "Three",
-      data: "3"
+      label: 'Three',
+      data: '3'
     },
     {
-      label: "Four",
-      data: "4"
+      label: 'Four',
+      data: '4'
     },
     {
-      label: "Five",
-      data: "5"
+      label: 'Five',
+      data: '5'
     },
     {
-      label: "Six",
-      data: "6"
+      label: 'Six',
+      data: '6'
     }
   ];
-  selectedOptions = ["1", "2", "3"];
+  selectedOptions = ['1', '2', '3'];
   selected = this.selectedOptions;
   showError = false;
-  errorMessage = "";
+  errorMessage = '';
+  multiple = false;
 
   constructor() {}
 
@@ -58,6 +59,6 @@ export class AppComponent {
 
   onValidate() {
     this.showError = !this.showError;
-    this.errorMessage = "This field is required";
+    this.errorMessage = 'This field is required';
   }
 }

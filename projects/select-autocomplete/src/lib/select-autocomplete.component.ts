@@ -230,7 +230,8 @@ export class SelectAutocompleteComponent implements OnChanges, DoCheck {
         }
       }
     }
-    return this.displayString;
+    // return this.displayString;
+    return 'Algo';
   }
 
   onSelectionChange(val) {
