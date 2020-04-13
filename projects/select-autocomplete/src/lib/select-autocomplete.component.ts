@@ -190,9 +190,12 @@ export class SelectAutocompleteComponent implements OnChanges, DoCheck {
 
   onDisplayString() {
     this.displayString = '';
-    if (this.selectedValue && this.selectedValue.length) {
+    // console.log('Valor seleccionado: ' + this.selectedValue);
+    if (this.selectedValue) {
+      // console.log('Entra aquí.');
       let displayOption = [];
       if (this.multiple) {
+        // console.log('Multiple');
         // Multi select display
         for (let i = 0; i < this.labelCount; i++) {
           displayOption[i] = this.options.filter(
@@ -221,6 +224,7 @@ export class SelectAutocompleteComponent implements OnChanges, DoCheck {
           }
         }
       } else {
+        // console.log('Single');
         // Single select display
         displayOption = this.options.filter(
           option => option[this.value] === this.selectedValue
@@ -228,10 +232,10 @@ export class SelectAutocompleteComponent implements OnChanges, DoCheck {
         if (displayOption.length) {
           this.displayString = displayOption[0][this.display];
         }
+        // console.log(this.selectedValue);
       }
     }
-    // return this.displayString;
-    return 'Algo';
+    return this.displayString;
   }
 
   onSelectionChange(val) {
