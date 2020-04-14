@@ -20,6 +20,7 @@ import { FormControl } from '@angular/forms';
         [multiple]="multiple"
         [(ngModel)]="selectedValue"
         (selectionChange)="onSelectionChange($event)"
+        disableOptionCentering="disableOptionCentering"
       >
         <div class="box-search">
           <mat-checkbox
@@ -108,6 +109,7 @@ export class SelectAutocompleteComponent implements OnChanges, DoCheck {
   // New Options
   @Input() labelCount = 1;
   @Input() appearance: 'standard' | 'fill' | 'outline' = 'standard';
+  @Input() disableOptionCentering = false;
 
   @Output()
   selectionChange: EventEmitter<any> = new EventEmitter();
